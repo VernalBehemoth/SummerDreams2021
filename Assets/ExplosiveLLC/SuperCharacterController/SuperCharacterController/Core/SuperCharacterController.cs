@@ -73,7 +73,7 @@ public class SuperCharacterController:MonoBehaviour
 	private Collider ownCollider;
 
 	[SerializeField]
-	public float radius = 0.5f;
+	public float radius = 0.2f;
 
 	public float deltaTime { get; private set; }
 	public SuperGround currentGround { get; private set; }

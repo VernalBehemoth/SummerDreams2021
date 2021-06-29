@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 411566}
   - component: {fileID: 33000011090331936}
   - component: {fileID: 23000013043627920}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: world-ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &411566
 Transform:
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 4ea8e2de4ac6b564c98a36f67a2ad64f, type: 2}
-  - {fileID: 2100000, guid: 6a1a1ff74be63374aa9c17b8e7395b39, type: 2}
+  - {fileID: 2100000, guid: 5f35ae9530edec84085e28d4c3302e29, type: 2}
   - {fileID: 2100000, guid: 5f35ae9530edec84085e28d4c3302e29, type: 2}
   - {fileID: 2100000, guid: d0054e2826ae0cc4e8abb517bd8d7ac5, type: 2}
   m_StaticBatchInfo:

@@ -171,6 +171,14 @@ namespace RPGCharacterAnims
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MouseClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""06806513-1248-4b72-85cc-c6aba5014c43"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap""
                 }
             ],
             ""bindings"": [
@@ -459,6 +467,50 @@ namespace RPGCharacterAnims
                     ""action"": ""WeaponRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25611aa4-2590-414a-a6f8-4528a54b7dc3"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""MouseClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Button With One Modifier"",
+                    ""id"": ""6e1eaf41-bb20-4ab2-891e-22f6cfb8ab43"",
+                    ""path"": ""ButtonWithOneModifier"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseClick"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""11968763-73e0-4455-b381-21be584ab330"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""button"",
+                    ""id"": ""d6e7d2a7-d72a-43f7-b2a6-7aa47e58f9b3"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""MouseClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -508,6 +560,7 @@ namespace RPGCharacterAnims
             m_RPGCharacter_WeaponLeft = m_RPGCharacter.FindAction("WeaponLeft", throwIfNotFound: true);
             m_RPGCharacter_WeaponRight = m_RPGCharacter.FindAction("WeaponRight", throwIfNotFound: true);
             m_RPGCharacter_WeaponUp = m_RPGCharacter.FindAction("WeaponUp", throwIfNotFound: true);
+            m_RPGCharacter_MouseClick = m_RPGCharacter.FindAction("MouseClick", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -576,6 +629,7 @@ namespace RPGCharacterAnims
         private readonly InputAction m_RPGCharacter_WeaponLeft;
         private readonly InputAction m_RPGCharacter_WeaponRight;
         private readonly InputAction m_RPGCharacter_WeaponUp;
+        private readonly InputAction m_RPGCharacter_MouseClick;
         public struct RPGCharacterActions
         {
             private @RPGInputs m_Wrapper;
@@ -599,6 +653,7 @@ namespace RPGCharacterAnims
             public InputAction @WeaponLeft => m_Wrapper.m_RPGCharacter_WeaponLeft;
             public InputAction @WeaponRight => m_Wrapper.m_RPGCharacter_WeaponRight;
             public InputAction @WeaponUp => m_Wrapper.m_RPGCharacter_WeaponUp;
+            public InputAction @MouseClick => m_Wrapper.m_RPGCharacter_MouseClick;
             public InputActionMap Get() { return m_Wrapper.m_RPGCharacter; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -665,6 +720,9 @@ namespace RPGCharacterAnims
                     @WeaponUp.started -= m_Wrapper.m_RPGCharacterActionsCallbackInterface.OnWeaponUp;
                     @WeaponUp.performed -= m_Wrapper.m_RPGCharacterActionsCallbackInterface.OnWeaponUp;
                     @WeaponUp.canceled -= m_Wrapper.m_RPGCharacterActionsCallbackInterface.OnWeaponUp;
+                    @MouseClick.started -= m_Wrapper.m_RPGCharacterActionsCallbackInterface.OnMouseClick;
+                    @MouseClick.performed -= m_Wrapper.m_RPGCharacterActionsCallbackInterface.OnMouseClick;
+                    @MouseClick.canceled -= m_Wrapper.m_RPGCharacterActionsCallbackInterface.OnMouseClick;
                 }
                 m_Wrapper.m_RPGCharacterActionsCallbackInterface = instance;
                 if (instance != null)
@@ -726,6 +784,9 @@ namespace RPGCharacterAnims
                     @WeaponUp.started += instance.OnWeaponUp;
                     @WeaponUp.performed += instance.OnWeaponUp;
                     @WeaponUp.canceled += instance.OnWeaponUp;
+                    @MouseClick.started += instance.OnMouseClick;
+                    @MouseClick.performed += instance.OnMouseClick;
+                    @MouseClick.canceled += instance.OnMouseClick;
                 }
             }
         }
@@ -769,6 +830,7 @@ namespace RPGCharacterAnims
             void OnWeaponLeft(InputAction.CallbackContext context);
             void OnWeaponRight(InputAction.CallbackContext context);
             void OnWeaponUp(InputAction.CallbackContext context);
+            void OnMouseClick(InputAction.CallbackContext context);
         }
     }
 }
